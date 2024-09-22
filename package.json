@@ -1,0 +1,41 @@
+{
+  "name": "@dmytromykhailiuk/reactive-react",
+  "version": "1.0.0",
+  "description": "Simple and Powerful Signal implementation for React",
+  "files": [
+    "dist/src"
+  ],
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "scripts": {
+    "compile": "npx tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmytromykhailiuk/react-signal.git"
+  },
+  "author": "Dmytro Mykhailiuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmytromykhailiuk/react-signal/issues"
+  },
+  "homepage": "https://github.com/dmytromykhailiuk/react-signal#readme",
+  "devDependencies": {
+    "@types/node": "^22.5.4",
+    "@typescript-eslint/eslint-plugin": "^8.4.0",
+    "@typescript-eslint/parser": "^8.4.0",
+    "@types/react": "^18.3.8",
+    "eslint": "^9.9.1",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "husky": "^9.1.5",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@dmytromykhailiuk/reactive": "^1.0.0",
+    "react": "^18.3.1"
+  }
+}
