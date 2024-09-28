@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.useComponentUpdateWithSignal = exports.useDebouncedSignalEffect = exports.useSignalEffect = exports.useComputedSignal = exports.useSignal = void 0;
+exports.useReactive = exports.useComponentUpdateWithSignal = exports.useDebouncedSignalEffect = exports.useSignalEffect = exports.useComputedSignal = exports.useSignal = void 0;
 const reactive_1 = require("@dmytromykhailiuk/reactive");
 const react_1 = require("react");
 const useSignal = (value, deeps = []) => {
@@ -101,4 +101,12 @@ const useComponentUpdateWithSignal = (...signals) => {
     }, signals);
 };
 exports.useComponentUpdateWithSignal = useComponentUpdateWithSignal;
+const useReactive = (signal) => {
+    const [_, updateState] = (0, react_1.useState)(signal.value);
+    (0, react_1.useEffect)(() => {
+        return signal.subscribe((value) => updateState(value));
+    }, [signal]);
+    return signal;
+};
+exports.useReactive = useReactive;
 //# sourceMappingURL=index.js.map

@@ -54,10 +54,25 @@ b.value = b.value + 2;
 
 **IMPORTANT: changing the signal value dosn't trigger component update**
 
-**For component update we need to use useComponentUpdateWithSignal hook**
+**For component update we need to use useReactive or useComponentUpdateWithSignal hooks**
+
+## Example of useReactive usage
+```typescript
+import { useCallback } from 'react';
+import { useSignal, useComputedSignal, useReactive } from '@dmytromykhailiuk/reactive-react';
+
+const ExampleComponent = () => {
+  const signal = useReactive(useSignal(0)); // can pass signal or computed
+
+  return <>
+    <div>signal value - {signal.value}</div>
+    <button click={() => signal.update(value => value + 1)}>increase signal value</button>
+  </>
+}
+```
+
 
 ## Example of useComponentUpdateWithSignal usage
-
 ```typescript
 import { useCallback } from 'react';
 import { useSignal, useComputedSignal, useComponentUpdateWithSignal } from '@dmytromykhailiuk/reactive-react';
@@ -68,7 +83,7 @@ const ExampleComponent = () => {
 
   const computedSignal = useComputedSignal(() => firstSignal.value + secontSignal.value);
 
-  useComponentUpdateWithSignal(computedSignal);
+  useComponentUpdateWithSignal(computedSignal); // We can pass multiple signals
 
   const inscreaseSignalValue = useCallback((signal) => {
     signal.value = signal.value + 1;
@@ -81,7 +96,7 @@ const ExampleComponent = () => {
     <div>computedSignal - {computedSignal.value} </div>
     <button click={inscreaseFirstSignalValue}>increase first signal</button>
     <button click={inscreaseSecondSignalValue}>increase second signal</button>
-  </div>
+  </>
 }
 
 ```

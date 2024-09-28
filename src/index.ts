@@ -161,3 +161,13 @@ export const useComponentUpdateWithSignal = (...signals: Array<Signal | Computed
     };
   }, signals);
 };
+
+export const useReactive = <T = any>(signal: Signal<T> | ComputedSignal<T>) => {
+  const [_, updateState] = useState(signal.value);
+
+  useEffect(() => {
+    return signal.subscribe((value) => updateState(value));
+  }, [signal]);
+
+  return signal;
+};
